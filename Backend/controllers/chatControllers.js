@@ -113,7 +113,7 @@ const renameGroup = asyncHandler(async (req, res) => {
     }
   )
     .populate("users", "-password")
-    .populate("goupAdmin", "-password");
+    .populate("groupAdmin", "-password");
 
   if (!updatedChat) {
     res.status(404);
@@ -136,7 +136,7 @@ const addToGroup = asyncHandler(async (req, res) => {
     }
   )
     .populate("users", "-password")
-    .populate("goupAdmin", "-password");
+    .populate("groupAdmin", "-password");
 
   if (!added) {
     res.status(404);
@@ -159,13 +159,13 @@ const removeFromGroup = asyncHandler(async (req, res) => {
     }
   )
     .populate("users", "-password")
-    .populate("goupAdmin", "-password");
+    .populate("groupAdmin", "-password");
 
   if (!removed) {
     res.status(404);
     throw new Error("Chat Not Found");
   } else {
-    res.json(added);
+    res.json(removed);
   }
 });
 module.exports = {
